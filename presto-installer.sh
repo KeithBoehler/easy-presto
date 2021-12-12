@@ -12,12 +12,18 @@ if [ ! -d $ASTROSOFT ]; then
 fi 
 
 ## Getting a few things 
+echo "Getting things we need from apt... "
 sudo apt-get -qq update
 sudo apt-get -qq --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev
-
+echo "Done. "
 # Get anaconda
 
 # Get FFTW
+echo "Getting FFTW... "
+cd $ASTROSOFT
+wget fftw.org/fftw-3.3.10.tar.gz
+tar -zx fftw-3.3.10.tar.gz
+echo "Done."
 
 # Get PGPLOT
 
