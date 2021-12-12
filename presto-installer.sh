@@ -37,28 +37,41 @@ fi
 echo "Starting PRESTO... "
 cd $ASTROSOFT
 #wget ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz
-tar -zxf pgplot5.2.tar.gz
-mv pgplot pgplot_src
-if [[ ! -d $ASTROSOFT/pgplot ]]; then
-	echo "Making pgplot target dir... "
-	mkdir $ASTROSOFT/pgplot
-fi 
-cd $ASTROSOFT/pgplot
-cp $ASTROSOFT/pgplot_src/drivers.list $ASTROSOFT/pgplot/
+#tar -zxf pgplot5.2.tar.gz
+#mv pgplot pgplot_src
+#if [[ ! -d $ASTROSOFT/pgplot ]]; then
+#	echo "Making pgplot target dir... "
+#	mkdir $ASTROSOFT/pgplot
+#fi 
+#cd $ASTROSOFT/pgplot
+#cp $ASTROSOFT/pgplot_src/drivers.list $ASTROSOFT/pgplot/
 
 # Uncommend the XWindow and PS drivers. Those are the ones i use
-sed -i '/^!.* XWDRIV /s/^!//' drivers.list
-sed -i '/^!.* PSDRIV /s/^!//' drivers.list
+#sed -i '/^!.* XWDRIV /s/^!//' drivers.list
+#sed -i '/^!.* PSDRIV /s/^!//' drivers.list
 
 # Doing the makemake
-$ASTROSOFT/pgplot_src/makemake $ASTROSOFT/pgplot_src linux g77_gcc
+#$ASTROSOFT/pgplot_src/makemake $ASTROSOFT/pgplot_src linux g77_gcc
 
 # Change the fortrancompiler to gfortran
-sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
+#sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
+#make
+#source $HOME/zsh_astro
+#make cpg
+#ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
+#echo "Done. "
+
+# Get TEMPO
+echo "Getting TEMPO... "
+cd $ASTROSOFT
+#git clone git://git.code.sf.net/p/tempo/tempo
+cd $ASTROSOFT/tempo
+./prepare
+./configure --prefix=$HOME
 make
-source $HOME/zsh_astro
-make cpg
-ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
+make install
+
+
 echo "Done. "
 # Get PRESTO
 
