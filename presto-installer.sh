@@ -35,7 +35,20 @@ fi
 #echo "Done. "
 # Get PGPLOT
 echo "Starting PRESTO... "
+cd $ASTROSOFT
+#wget ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz
+tar -zxf pgplot5.2.tar.gz
+mv pgplot pgplot_src
+if [[ ! -d $ASTROSOFT/pgplot ]]; then
+	echo "Making pgplot target dir... "
+	mkdir $ASTROSOFT/pgplot
+fi 
+cd $ASTROSOFT/pgplot
+cp $ASTROSOFT/pgplot_src/drivers.list $ASTROSOFT/pgplot/
 
+# Uncommend the XWindow and PS drivers. Those are the ones i use
+sed -i '/^!.* XWDRIV /s/^!//' drivers.list
+sed -i '/^!.* PSDRIV /s/^!//' drivers.list
 echo "Done. "
 # Get PRESTO
 
