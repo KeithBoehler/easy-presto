@@ -65,13 +65,23 @@ cd $ASTROSOFT
 echo "Getting TEMPO... "
 cd $ASTROSOFT
 #git clone git://git.code.sf.net/p/tempo/tempo
-cd $ASTROSOFT/tempo
-./prepare
+#cd $ASTROSOFT/tempo
+#./prepare
+#./configure --prefix=$HOME
+#make
+#make install
+
+
+echo "Done. "
+# Get CFITS IO
+echo "Getting CFITSIO"
+cd $ASTROSOFT
+#wget http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-3.48.tar.gz
+tar -zxf cfitsio-3.48.tar.gz
+cd $ASTROSOFT/cfitsio-3.48
 ./configure --prefix=$HOME
 make
 make install
-
-
 echo "Done. "
 # Get PRESTO
 
