@@ -77,11 +77,17 @@ echo "Done. "
 echo "Getting CFITSIO"
 cd $ASTROSOFT
 #wget http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-3.48.tar.gz
-tar -zxf cfitsio-3.48.tar.gz
-cd $ASTROSOFT/cfitsio-3.48
-./configure --prefix=$HOME
-make
-make install
+#tar -zxf cfitsio-3.48.tar.gz
+#cd $ASTROSOFT/cfitsio-3.48
+#./configure --prefix=$HOME
+#make
+#make install
+#echo "Done. "
+# Get Python
+echo "Getting python 3.7 from anaconda set... "
+cd $ASTROSOFT
+#wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+bash $ASTROSOFT/Anaconda3-2021.11-Linux-x86_64.sh
 echo "Done. "
 # Get PRESTO
 
