@@ -16,7 +16,7 @@ fi
 ## Getting a few things 
 #echo "Getting things we need from apt... "
 #sudo apt-get -qq update
-#sudo apt-get -qq --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make
+sudo apt-get -qq --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev
 #echo "Done. "
 # Get anaconda
 
@@ -49,6 +49,13 @@ cp $ASTROSOFT/pgplot_src/drivers.list $ASTROSOFT/pgplot/
 # Uncommend the XWindow and PS drivers. Those are the ones i use
 sed -i '/^!.* XWDRIV /s/^!//' drivers.list
 sed -i '/^!.* PSDRIV /s/^!//' drivers.list
+
+# Doing the makemake
+$ASTROSOFT/pgplot_src/makemake $ASTROSOFT/pgplot_src linux g77_gcc
+
+# Change the fortrancompiler to gfortran
+sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
+make
 echo "Done. "
 # Get PRESTO
 
