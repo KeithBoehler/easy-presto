@@ -1,0 +1,29 @@
+echo "Activating pulsar search env... "
+
+export ASTROSOFT=$HOME/src/ASTROSOFT
+export LOFASMIO=$ASTROSOFT/lofasmio
+#Presto var
+export PRESTO=$ASTROSOFT/presto
+export PATH=$PRESTO/bin:$PATH
+#export PYTHONPATH=$PRESTO/lib/python
+
+#Some enviorment stuff for PGPLOT
+export PGPLOT_DIR=$ASTROSOFT/pgplot
+export LD_LIBRARY_PATH=$PGPLOT_DIR:$PRESTO/lib:$HOME/lib:$LD_LIBRARY_PATH
+export PGPLOT_DEV=/XWINDOW
+
+#bins for tempo, makemakewisdom, lofasmio, my repo
+#WARNING: The scripts f2py, f2py3 and f2py3.7 are installed in '/home/keith/.local/bin' which is not on PATH.
+export PATH=$HOME/bin:$LOFASMIO:$ASTROSOFT/ARCC:$HOME/.local/bin:$PATH
+export TEMPO=$ASTROSOFT/tempo
+#pkg configs
+#
+export PKG_CONFIG_PATH=$HOME/include:/usr/X11/lib/pkgconfig:$HOME/lib/pkgconfig:$PKG_CONFIG_PATH
+
+
+# Avoiding name PYTHONPATH becuase presto install says to not have that name
+# This is for my tools that use Scotts Python stuff.
+export SCOTTPYTHON=$PRESTO/python/presto
+
+
+echo "Find Pulsars!"
