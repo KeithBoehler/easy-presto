@@ -16,7 +16,7 @@ fi
 ## Getting a few things 
 #echo "Getting things we need from apt... "
 #sudo apt-get -qq update
-sudo apt-get -qq --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev
+#sudo apt-get -qq --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev
 #echo "Done. "
 # Get anaconda
 
@@ -56,6 +56,9 @@ $ASTROSOFT/pgplot_src/makemake $ASTROSOFT/pgplot_src linux g77_gcc
 # Change the fortrancompiler to gfortran
 sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
 make
+source $HOME/zsh_astro
+make cpg
+ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
 echo "Done. "
 # Get PRESTO
 
