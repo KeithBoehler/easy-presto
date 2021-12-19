@@ -14,75 +14,74 @@ if [[ ! -d $ASTROSOFT ]]; then
 fi 
 
 ## Getting a few things 
-#echo "Getting things we need from apt... "
-#sudo apt-get -qq update
-#sudo apt-get -qq --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev
-#echo "Done. "
-# Get anaconda
+echo "Getting things we need from apt... "
+sudo apt-get update
+sudo apt-get --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev
+echo "Done. "
 
 # Get FFTW
-#echo "Getting FFTW... "
-#FFT_DIR=$ASTROSOFT/fftw-3.3.10
-#cd $ASTROSOFT
-#wget fftw.org/fftw-3.3.10.tar.gz # Remove comment when done testing 
-#tar -zxf fftw-3.3.10.tar.gz
-#cd $ASTROSOFT/fftw-3.3.10
-#./configure --prefix=$HOME --enable-shared --enable-single --enable-sse --enable-sse2 --enable-avx --enable-avx2 --enable-fma
-#make
-#make check
-#make install
-#make installcheck
-#echo "Done. "
+echo "Getting FFTW... "
+FFT_DIR=$ASTROSOFT/fftw-3.3.10
+cd $ASTROSOFT
+wget fftw.org/fftw-3.3.10.tar.gz # Remove comment when done testing 
+tar -zxf fftw-3.3.10.tar.gz
+cd $ASTROSOFT/fftw-3.3.10
+./configure --prefix=$HOME --enable-shared --enable-single --enable-sse --enable-sse2 --enable-avx --enable-avx2 --enable-fma
+make
+make check
+make install
+make installcheck
+echo "Done. "
 # Get PGPLOT
 echo "Starting PRESTO... "
 cd $ASTROSOFT
-#wget ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz
-#tar -zxf pgplot5.2.tar.gz
-#mv pgplot pgplot_src
-#if [[ ! -d $ASTROSOFT/pgplot ]]; then
-#	echo "Making pgplot target dir... "
-#	mkdir $ASTROSOFT/pgplot
-#fi 
-#cd $ASTROSOFT/pgplot
-#cp $ASTROSOFT/pgplot_src/drivers.list $ASTROSOFT/pgplot/
+wget ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz
+tar -zxf pgplot5.2.tar.gz
+mv pgplot pgplot_src
+if [[ ! -d $ASTROSOFT/pgplot ]]; then
+	echo "Making pgplot target dir... "
+	mkdir $ASTROSOFT/pgplot
+fi 
+cd $ASTROSOFT/pgplot
+cp $ASTROSOFT/pgplot_src/drivers.list $ASTROSOFT/pgplot/
 
 # Uncommend the XWindow and PS drivers. Those are the ones i use
-#sed -i '/^!.* XWDRIV /s/^!//' drivers.list
-#sed -i '/^!.* PSDRIV /s/^!//' drivers.list
+sed -i '/^!.* XWDRIV /s/^!//' drivers.list
+sed -i '/^!.* PSDRIV /s/^!//' drivers.list
 
 # Doing the makemake
-#$ASTROSOFT/pgplot_src/makemake $ASTROSOFT/pgplot_src linux g77_gcc
+$ASTROSOFT/pgplot_src/makemake $ASTROSOFT/pgplot_src linux g77_gcc
 
 # Change the fortrancompiler to gfortran
-#sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
-#make
-#source $HOME/zsh_astro
-#make cpg
-#ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
-#echo "Done. "
+sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
+make
+source $HOME/zsh_astro
+make cpg
+ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
+echo "Done. "
 
 # Get TEMPO
 echo "Getting TEMPO... "
 cd $ASTROSOFT
-#git clone git://git.code.sf.net/p/tempo/tempo
-#cd $ASTROSOFT/tempo
-#./prepare
-#./configure --prefix=$HOME
-#make
-#make install
+git clone git://git.code.sf.net/p/tempo/tempo
+cd $ASTROSOFT/tempo
+./prepare
+./configure --prefix=$HOME
+make
+make install
 
 
 echo "Done. "
 # Get CFITS IO
 echo "Getting CFITSIO"
 cd $ASTROSOFT
-#wget http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-3.48.tar.gz
-#tar -zxf cfitsio-3.48.tar.gz
-#cd $ASTROSOFT/cfitsio-3.48
-#./configure --prefix=$HOME
-#make
-#make install
-#echo "Done. "
+wget http://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-3.48.tar.gz
+tar -zxf cfitsio-3.48.tar.gz
+cd $ASTROSOFT/cfitsio-3.48
+./configure --prefix=$HOME
+make
+make install
+echo "Done. "
 # Get Python
 echo "Getting python 3.7 from anaconda set... "
 cd $ASTROSOFT
