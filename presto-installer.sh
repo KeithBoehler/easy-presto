@@ -35,7 +35,7 @@ echo "Getting FFTW... "
 #make installcheck
 echo "Done. "
 # Get PGPLOT
-echo "Starting PRESTO... "
+echo "Starting PGPLOT... "
 #cd $ASTROSOFT
 #wget ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz
 #tar -zxf pgplot5.2.tar.gz
@@ -57,7 +57,7 @@ echo "Starting PRESTO... "
 # Change the fortrancompiler to gfortran
 #sed -i 's/FCOMPL=g77/FCOMPL=gfortran/g' makefile
 #make
-#source $HOME/zsh_astro
+source $INSTALLER_DIR/zsh_astro
 #make cpg
 #ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
 echo "Done. "
@@ -98,9 +98,12 @@ echo "Done. "
 echo "Getting PRESTO itself..."
 cd $ASTROSOFT
 git clone http://github.com/scottransom/presto.git
-cd presto
-
-
+echo $PRESTO
+cd $PRESTO/src
+make makewidsom
+make prep
+make
+cd $PRESTO; pip install .
 
 
 echo "Find Pulsars!!"
