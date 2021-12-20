@@ -91,9 +91,16 @@ cd $ASTROSOFT
 #bash $ASTROSOFT/Anaconda3-2021.11-Linux-x86_64.sh
 source ~/.bashrc
 #conda create --name pulsar python=3.7
-conda activate pulsar
-conda install scipy numpy astropy
+#conda activate pulsar
+#conda install scipy numpy astropy
 echo "Done. "
 # Get PRESTO
+echo "Getting PRESTO itself..."
+cd $ASTROSOFT
+git clone http://github.com/scottransom/presto.git
+cd presto
 
 
+
+
+echo "Find Pulsars!!"
