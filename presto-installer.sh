@@ -9,7 +9,7 @@ INSTALLER_DIR=$PWD
 
 # To look for our install direcotry. Anything that gets downloaded manually or is done from
 # source will be put here. 
-ASTROSOFT=$HOME/src/ASTROSOFT
+export ASTROSOFT=$HOME/ASTROSOFT
 if [[ ! -d $ASTROSOFT ]]; then
 	echo "Making astrosoft direcotry... "
 	mkdir $ASTROSOFT

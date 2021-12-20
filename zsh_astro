@@ -1,6 +1,6 @@
 echo "Activating pulsar search env... "
 
-export ASTROSOFT=$HOME/src/ASTROSOFT
+export ASTROSOFT=$HOME/ASTROSOFT
 export LOFASMIO=$ASTROSOFT/lofasmio
 #Presto var
 export PRESTO=$ASTROSOFT/presto
