@@ -18,7 +18,7 @@ fi
 ## Getting a few things 
 echo "Getting things we need from apt... "
 sudo apt-get update
-sudo apt-get --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev python3.8-venv
+sudo apt-get --yes install csh gfortran autoconf meson libglib2.0-dev libcfitsio-bin libcfitsio-doc libcfitsio-dev libpng.dev zlib1g-dev libfftw3-bin libfftw3-dev make libx11-dev python3.8-venv virtualenv libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libgdbm-dev lzma lzma-dev tcl-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev curl build-essential python-openssl
 echo "Done. "
 
 # Get FFTW
@@ -87,9 +87,25 @@ echo "Done. "
 # Get Python
 echo "Getting python env set... "
 cd $ASTROSOFT
-#wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
-python3 -m venv $ASTROSOFT/pulsar-python
-source $ASTROSOFT/pulsar-python/bin/activate
+# https://medium.datadriveninvestor.com/how-to-install-and-manage-multiple-python-versions-on-linux-916990dabe4b
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo "# Pyenv environment variables" >> $HOME/.bashrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $HOME/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"# Pyenv initialization' >> $HOME/.bashrc
+echo 'if command -v pyenv 1>/dev/null 2>&1; then' >> $HOME/.bashrc
+echo '  eval "$(pyenv init --path)"' >> $HOME/.bashrc
+echo 'fi' >> $HOME/.bashrc
+
+sourc  $HOME/.bashrc
+
+pyenv install 3.7.10
+mkdir prestopy
+
+pyenv local 3.7.10
+python -m venv py3.7.10_presto
+
+source $ASTROSOFT/py3.7.10_presto/bin/activate
+
 pip install scipy numpy astropy
 echo "Done. "
 # Get PRESTO
