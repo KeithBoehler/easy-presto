@@ -113,11 +113,16 @@ echo "Getting PRESTO itself..."
 cd $ASTROSOFT
 git clone http://github.com/scottransom/presto.git
 echo $PRESTO
+
+
+sed -i 's/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m"]/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m","gfortran"]/g' setup.py
+
 cd $PRESTO/src
 make makewidsom
 make prep
 make
 cd $PRESTO; pip install .
 
+python tests/test_presto_python.py
 
 echo "Find Pulsars!!"
