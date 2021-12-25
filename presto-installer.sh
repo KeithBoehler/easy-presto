@@ -117,6 +117,8 @@ echo $PRESTO
 
 sed -i 's/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m"]/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m","gfortran"]/g' setup.py
 
+sed -i 's/include_dirs = [numpy.get_include()]/include_dirs = [numpy.get_include(), "'$HOME'/bin", "'$HOME'/lib", "'$HOME'/include"]/g' setup.py
+
 cd $PRESTO/src
 make makewidsom
 make prep
