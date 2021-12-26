@@ -98,6 +98,7 @@ echo 'fi' >> $HOME/.bashrc
 
 sourc  $HOME/.bashrc
 
+
 pyenv install 3.7.10
 mkdir prestopy
 
@@ -112,12 +113,12 @@ echo "Done. "
 echo "Getting PRESTO itself..."
 cd $ASTROSOFT
 git clone http://github.com/scottransom/presto.git
-echo $PRESTO
+cd $PRESTO
+
+sed -i '21s/.*/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m", "gfortran"]/' setup.py
 
 
-sed -i 's/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m"]/ppgplot_libraries = ["cpgplot", "pgplot", "X11", "png", "m","gfortran"]/g' setup.py
-
-sed -i 's/include_dirs = [numpy.get_include()]/include_dirs = [numpy.get_include(), "'$HOME'/bin", "'$HOME'/lib", "'$HOME'/include"]/g' setup.py
+#sed -i "15s/.*/include_dirs = [numpy.get_include(), "'$HOME'/bin", "'$HOME'/lib", "'$HOME'/include"]/" setup.py
 
 cd $PRESTO/src
 make makewidsom
