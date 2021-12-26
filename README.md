@@ -13,6 +13,10 @@ Then simply type `./presto-installer.sh` and watch it work (or take a nap if the
 
 If you get a permission error you need to allow the file execute permissions with `chmod +x presto-installer.sh`
 
+![image](https://user-images.githubusercontent.com/11304311/147397860-5c1b113d-313f-44ad-ab49-70df284e90f3.png)
+
+
+![image](https://user-images.githubusercontent.com/11304311/147397849-232e7122-c308-4063-956a-49e798bab4fe.png)
 
 
 
